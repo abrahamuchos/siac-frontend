@@ -1,0 +1,28 @@
+$font-path: '/src/assets';
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  src: local('Nunito Sans'),local('Nunito-Sans'), url("#{$font-path}/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf") format('truetype');
+}
+
+body{
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: normal;
+  color: $black;
+}
+
+h1{
+  color: $black;
+}
+
+h2, h3, h4{
+  color: $grey;
+}
+
+h4{
+  font-weight: normal;
+}
+
+
+

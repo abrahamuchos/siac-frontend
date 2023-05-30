@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
-import {useUserContext} from "../contexts/UserProvider.jsx";
+import { useUserContext } from "../contexts/UserProvider.jsx";
 import axiosClient from "../axios-client.js";
+import {Button} from 'react-bootstrap'
 
 export default function DoctorLayout() {
   const {token, setToken, setUser, user} = useUserContext();
@@ -46,9 +47,9 @@ export default function DoctorLayout() {
             <h1>Doctor Layout</h1>
             <Outlet/>
             <div>
-              <button onClick={handleLogout}>Logout</button>
+              <Button onClick={handleLogout} className="btn btn-primary">Logout</Button>
             </div>
-          </> : (token ? <Navigate to='/401' replace /> : <Navigate to='/login' replace /> ))
+          </> : (token ? <Navigate to='/401' replace/> : <Navigate to='/login' replace/>))
       }
 
     </>
