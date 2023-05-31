@@ -33,12 +33,12 @@ const router = createBrowserRouter([
 
   {
     path: '/doctor', element: <DoctorLayout/>,
-    children: [
-      {
-        path: 'dashboard',
-        element: <DoctorComponent/>
-      }
-    ]
+    // children: [
+    //   {
+    //     index: true,
+    //     element: <DoctorComponent/>
+    //   }
+    // ]
   },
 
   {

@@ -12,7 +12,7 @@ export default function Login() {
     e.preventDefault();
     setIsLoading(true)
     const payload = {
-      email: 'celestino.moen@yahoo.com',
+      email: 'bridgette46@gmail.com',
       password: 'password'
     }
 

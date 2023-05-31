@@ -2,11 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { useUserContext } from "../contexts/UserProvider.jsx";
 import axiosClient from "../axios-client.js";
-import {Button} from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
+import Navigation from "../components/Navigation.jsx";
 
 export default function DoctorLayout() {
   const {token, setToken, setUser, user} = useUserContext();
   const [isLoading, setIsLoading] = useState(true);
+  const modules = [
+    {title: 'Citas', route: '/#'},
+    {title: 'Pacientes', route: '/#'},
+    {title: 'Materiales', route: '/#'},
+    {title: 'Fórmulas y algoritmos', route: '/#'},
+    {title: 'Siac Comunidad', route: '/#'},
+    {title: 'Estadísticas', route: '/#'},
+  ];
+
 
   useEffect(() => {
     return () => {
@@ -25,33 +35,19 @@ export default function DoctorLayout() {
     };
   }, []);
 
-  /**
-   * Logout user
-   */
-  const handleLogout = () => {
-    axiosClient.get('/logout')
-      .then(() => {
-        setToken(false);
-        setUser({});
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-  }
 
   return (
     <>
       {isLoading ? <h1>Cargando ... </h1> :
         (user.role?.id === 3 && token ?
           <>
-            <h1>Doctor Layout</h1>
-            <Outlet/>
-            <div>
-              <Button onClick={handleLogout} className="btn btn-primary">Logout</Button>
-            </div>
+            <Navigation modules={modules} user={user}/>
+            <main>
+              <h1>Doctor Layout</h1>
+              <Outlet/>
+            </main>
           </> : (token ? <Navigate to='/401' replace/> : <Navigate to='/login' replace/>))
       }
-
     </>
   );
 }

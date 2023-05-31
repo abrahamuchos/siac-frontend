@@ -1,0 +1,39 @@
+#navbar{
+  overflow-x: hidden;
+  height: 100%;
+  width: 220px;
+  position: fixed;
+  z-index: 1;
+  border-radius: 0 20px 20px 0;
+
+  .rounded-circle{
+    width: 55px;
+  }
+  .nav-name{
+    a{
+      color: $grey;
+      text-decoration: none;
+    }
+  }
+  .nav-logout > Button{
+    color: $grey;
+  }
+}
+
+.nav{
+  margin-top: 20%;
+  .nav-item{
+    font-size: 18px;
+    .nav-link{
+      color: $grey-3;
+    }
+    .active{
+      color:$black;
+      background-color: $white;
+    }
+  }
+}
+
+main{
+  margin-left: 260px;
+}

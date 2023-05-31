@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'path';
+import svgr from 'vite-plugin-svgr';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,5 +11,5 @@ export default defineConfig({
       '~bootstrap': resolve(__dirname, 'node_modules/bootstrap'),
     },
   },
-  plugins: [react()],
+  plugins: [svgr(),react()],
 })

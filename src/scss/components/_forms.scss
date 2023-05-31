@@ -72,3 +72,23 @@
     }
   }
 }
+
+.multiselect-container{
+  .optionContainer{
+    .highlightOption{
+      color: $black;
+      background-color: $grey-2;
+    }
+    .option:hover{
+      color: $black;
+      background-color: $grey-2;
+    }
+  }
+  .search-wrapper{
+    .chip{
+      background-color: $white;
+      border: 1px solid $primary;
+      color: $black;
+    }
+  }
+}

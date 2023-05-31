@@ -18,6 +18,8 @@ $blue-5: #E8E6F8;
 //Black and grey
 $black: #3d3d3d;
 $grey: #727272;
+$grey-2: #F8F8FA;
+$grey-3: #828282;
 
 //Pink
 $pink: #F845FC;
@@ -33,3 +35,11 @@ $red: #EB5757;
 
 $primary: $blue-1 !default;
 $primary-stroke: $pink !default;
+
+//Cards spacers
+$card-spacer-x: 2rem;
+$card-spacer-y: 2rem;
+
+//Btn padding
+$btn-padding-y: .400rem !default;
+$btn-padding-x: .95rem !default;

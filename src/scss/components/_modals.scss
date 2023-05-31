@@ -1,0 +1,32 @@
+$modal-padding: 1.5rem;
+.modal-content{
+  border: none;
+  border-radius: 0;
+  box-shadow: 0px 8px 16px rgba(142, 141, 208, 0.12);
+  .modal-header{
+    border: none;
+    padding-left: $modal-padding;
+    padding-right: $modal-padding;
+    padding-top: 1rem;
+    .modal-title.h4{
+      color: $black;
+      font-weight: bold;
+    }
+    .btn-close{
+      position: absolute;
+      right: $modal-header-padding-x;
+    }
+  }
+  .modal-body{
+    padding-left: $modal-padding;
+    padding-right: $modal-padding;
+    color: $black;
+  }
+  .modal-footer{
+    justify-content: center;
+    border: none;
+    padding-left: $modal-padding;
+    padding-right: $modal-padding;
+    padding-bottom: $modal-padding;
+  }
+}
