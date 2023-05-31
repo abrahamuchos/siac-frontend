@@ -1,0 +1,27 @@
+// abstracts files
+@import "./abstracts/_variables.scss";
+
+
+// Vendor files
+@import "~bootstrap/scss/bootstrap";
+
+
+//Core
+@import "./core/_typography.scss";
+@import "./core/_utilities.scss";
+
+//Components
+@import "./components/_buttons.scss";
+@import "./components/_forms.scss";
+@import "./components/_links.scss";
+@import "./components/_cards.scss";
+@import "./components/_modals.scss";
+
+
+//Layout
+@import "./layout/_base.scss";
+@import "./layout/_navigation.scss";
+
+//Sections
+
+//Pages

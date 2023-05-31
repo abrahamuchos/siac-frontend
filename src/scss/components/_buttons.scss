@@ -1,0 +1,61 @@
+.btn{
+  border-radius: 4px;
+
+  &:disabled{
+    background-color: $disabled-2;
+    color: $purple;
+    border: none;
+  }
+}
+
+.btn-primary{
+  color: $white;
+  background-color: $primary;
+  &:hover{
+    background-color: $blue-2;
+  }
+  &:focus, &:active{
+    background-color: $blue-3 !important;
+  }
+}
+
+.btn-secondary{
+  color: $primary;
+  background-color: $white;
+  border-color: $primary;
+  border-width: 1px;
+  &:hover{
+    background-color: $white-2;
+    border-color: $primary;
+    border-width: 1.5px;
+    color: $primary;
+  }
+  &:focus, &:active{
+    color: $primary !important;
+    background-color: $white-2 !important;
+    border-color: $primary !important;
+    border-width: 1.5px !important;
+  }
+}
+
+.btn-tertiary{
+  color: $primary;
+  background-color: $white;
+  border: none;
+  &:hover{
+    background-color: $white-2;
+    border-color: $primary;
+    border-width: 1.5px;
+    color: $primary;
+  }
+  &:focus, &:active{
+    color: $primary !important;
+    background-color: $blue-4 !important;
+    border-color: $primary !important;
+    border-width: 1.5px !important;
+  }
+}
+
+.btn-danger{
+  background-color: $red;
+}

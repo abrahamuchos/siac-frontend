@@ -1,0 +1,30 @@
+#content-layout{
+  position: relative;
+  min-height: 100vh;
+  margin-left: $nav-width + 40px;
+}
+
+main{
+  padding-top: 2rem;
+  padding-right: 40px;
+  padding-bottom: 3rem;
+}
+
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  small{
+    margin-left: auto;
+  }
+  .ferrer-logo{
+    margin-left: auto;
+    padding-right: 1rem;
+    img{
+      width: 70px;
+    }
+  }
+}

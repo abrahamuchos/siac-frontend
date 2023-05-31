@@ -1,0 +1,94 @@
+.disabled{
+  color: $disabled;
+}
+
+.form-label{
+  font-weight: lighter;
+}
+
+.form-control{
+  border-radius: 4px;
+  border-color: transparent;
+  color: $black;
+  &::placeholder{
+    color: $grey;
+  }
+  &:hover{
+    border-color: $blue-5;
+  }
+  &:focus{
+    border-color: $primary;
+    box-shadow: none;
+  }
+  &:disabled{
+    background-color: $disabled-2;
+    cursor: not-allowed;
+    &::placeholder{
+      color: $disabled;
+    }
+
+  }
+}
+
+.form-text{
+  font-weight: lighter;
+  color: $grey;
+}
+
+.form-select{
+  border: none;
+  color: $black;
+  &:disabled{
+    color: $disabled;
+    background-color: $disabled-2;
+    cursor: not-allowed;
+  }
+  &:focus{
+    box-shadow: none;
+    border: 1px solid $blue-5;
+  }
+}
+
+.input-group{
+  .input-group-text{
+    background-color: $body-bg;
+    border: none;
+  }
+}
+
+.form-floating{
+  label{
+    color: $black;
+    font-weight: lighter;
+  }
+}
+
+.form-check{
+  .form-check-input{
+    border-color: $blue-5;
+    &:focus, &:active{
+      box-shadow: none;
+      border-color: $primary;
+    }
+  }
+}
+
+.multiselect-container{
+  .optionContainer{
+    .highlightOption{
+      color: $black;
+      background-color: $grey-2;
+    }
+    .option:hover{
+      color: $black;
+      background-color: $grey-2;
+    }
+  }
+  .search-wrapper{
+    .chip{
+      background-color: $white;
+      border: 1px solid $primary;
+      color: $black;
+    }
+  }
+}
