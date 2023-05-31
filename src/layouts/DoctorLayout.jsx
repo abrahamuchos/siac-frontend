@@ -4,6 +4,7 @@ import { useUserContext } from "../contexts/UserProvider.jsx";
 import axiosClient from "../axios-client.js";
 import { Button } from 'react-bootstrap'
 import Navigation from "../components/Navigation.jsx";
+import Footer from "../components/Footer.jsx";
 
 export default function DoctorLayout() {
   const {token, setToken, setUser, user} = useUserContext();
@@ -42,11 +43,16 @@ export default function DoctorLayout() {
         (user.role?.id === 3 && token ?
           <>
             <Navigation modules={modules} user={user}/>
-            <main>
-              <h1>Doctor Layout</h1>
-              <Outlet/>
-            </main>
-          </> : (token ? <Navigate to='/401' replace/> : <Navigate to='/login' replace/>))
+            <div id='content-layout'>
+              <main>
+                <h1>Doctor Layout</h1>
+                <Outlet/>
+
+              </main>
+              <Footer/>
+            </div>
+          </>
+          : (token ? <Navigate to='/401' replace/> : <Navigate to='/login' replace/>))
       }
     </>
   );

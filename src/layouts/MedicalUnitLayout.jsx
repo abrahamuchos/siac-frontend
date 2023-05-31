@@ -3,6 +3,7 @@ import { useUserContext } from "../contexts/UserProvider.jsx";
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import axiosClient from "../axios-client.js";
 import Navigation from "../components/Navigation.jsx";
+import Footer from "../components/Footer.jsx";
 
 export default function MedicalUnitLayout() {
   const {token, setToken, setUser, user} = useUserContext();
@@ -40,11 +41,15 @@ export default function MedicalUnitLayout() {
         (user.role?.id === 2 && token ?
           <>
             <Navigation modules={modules} user={user}/>
-            <main>
-              <h1>Medical Unit Layout</h1>
-              <Outlet/>
-            </main>
-          </> : (token ? <Navigate to='/401' replace /> : <Navigate to='/login' replace /> ))
+            <div id='content-layout'>
+              <main>
+                <h1>Medical Unit Layout</h1>
+                <Outlet/>
+              </main>
+              <Footer/>
+            </div>
+          </>
+          : (token ? <Navigate to='/401' replace/> : <Navigate to='/login' replace/>))
       }
 
     </>

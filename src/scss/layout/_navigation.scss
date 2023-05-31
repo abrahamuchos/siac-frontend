@@ -1,7 +1,7 @@
 #navbar{
   overflow-x: hidden;
   height: 100%;
-  width: 220px;
+  width: $nav-width;
   position: fixed;
   z-index: 1;
   border-radius: 0 20px 20px 0;
@@ -32,8 +32,4 @@
       background-color: $white;
     }
   }
-}
-
-main{
-  margin-left: 260px;
 }
