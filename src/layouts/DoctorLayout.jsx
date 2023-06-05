@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Navigate, Outlet, useNavigate } from "react-router-dom";
-import { useUserContext } from "../contexts/UserProvider.jsx";
 import axiosClient from "../axios-client.js";
-import { Button } from 'react-bootstrap'
+import { Navigate, Outlet } from "react-router-dom";
+import { useUserContext } from "../contexts/UserProvider.jsx";
 import Navigation from "../components/Navigation.jsx";
+
 import Footer from "../components/Footer.jsx";
+import Loader from "../components/Loader.jsx";
 
 export default function DoctorLayout() {
   const {token, setToken, setUser, user} = useUserContext();
@@ -21,7 +22,7 @@ export default function DoctorLayout() {
 
   useEffect(() => {
     return () => {
-      axiosClient.get('auth_user')
+      axiosClient.get('auth-user')
         .then(({data}) => {
           setUser(data.user)
           setIsLoading(false)
@@ -39,7 +40,7 @@ export default function DoctorLayout() {
 
   return (
     <>
-      {isLoading ? <h1>Cargando ... </h1> :
+      {isLoading ? <Loader/> :
         (user.role?.id === 3 && token ?
           <>
             <Navigation modules={modules} user={user}/>

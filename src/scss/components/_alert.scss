@@ -1,4 +1,12 @@
 .alert{
-  width: 30%;
-  margin-left: auto;
+  width: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 10%;
+  @media only screen and (min-width: map-get($grid-breakpoints, md)){
+    width: 60%;
+  }
+  @media only screen and (min-width: map-get($grid-breakpoints, lg)){
+    width: 40%;
+  }
 }

@@ -10,7 +10,7 @@ export default function RootLayout() {
 
 
   useEffect(() => {
-    axiosClient.get('/auth_user')
+    axiosClient.get('/auth-user')
       .then(({data}) => {
         setUser(data.user);
         setIsLoading(false)

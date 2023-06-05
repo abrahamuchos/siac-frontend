@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useUserContext } from "../contexts/UserProvider.jsx";
-import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import axiosClient from "../axios-client.js";
+import { useUserContext } from "../contexts/UserProvider.jsx";
+import { Navigate, Outlet } from "react-router-dom";
 import Navigation from "../components/Navigation.jsx";
+
 import Footer from "../components/Footer.jsx";
+import Loader from "../components/Loader.jsx";
 
 export default function MedicalUnitLayout() {
   const {token, setToken, setUser, user} = useUserContext();
@@ -19,7 +21,7 @@ export default function MedicalUnitLayout() {
 
   useEffect(() => {
     return () => {
-      axiosClient.get('auth_user')
+      axiosClient.get('auth-user')
         .then(({data}) => {
           setUser(data.user)
           setIsLoading(false)
@@ -37,7 +39,7 @@ export default function MedicalUnitLayout() {
 
   return (
     <>
-      {isLoading ? <h1>Cargando ... </h1> :
+      {isLoading ? <Loader/> :
         (user.role?.id === 2 && token ?
           <>
             <Navigation modules={modules} user={user}/>

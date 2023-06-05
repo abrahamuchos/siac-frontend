@@ -1,11 +1,13 @@
-import React, { useRef, useState } from 'react';
-import { useUserContext } from "../contexts/UserProvider.jsx";
+import React, { useState } from 'react';
 import axiosClient from "../axios-client.js";
+import { useUserContext } from "../contexts/UserProvider.jsx";
 import { Navigate } from "react-router-dom";
 import { Alert, Button, Card, FloatingLabel, Form } from "react-bootstrap";
-import { Formik, useFormik } from "formik";
+import { Formik } from "formik";
 import { object, string } from "yup";
+
 import Footer from "../components/Footer.jsx";
+import EkgLoader from "../components/EkgLoader";
 
 import '../scss/pages/login.scss';
 
@@ -39,7 +41,7 @@ export default function Login() {
         console.error(err)
         setIsLoading(false)
         setSubmitting(false);
-        if(response && response.status === 422){
+        if(response && (response.status === 422 || response.status === 401)){
           setErrors('Correo electrónico o contraseña incorrecta, intente nuevamente');
         }
       });
@@ -72,16 +74,17 @@ export default function Login() {
                   <div className="error-input-message">{errors.password}</div>
                 ) : null}
                 <small className='float-end mt-2'>
-                  <a href="/#" className='text-decoration-none'>Olvide la contraseña</a>
+                  <a href="/forgot" className='text-decoration-none'>Olvide la contraseña</a>
                 </small>
               </FloatingLabel>
 
               <div className='d-grid gap-2 d-md-block text-center mt-3'>
-                <Button variant='primary' type='submit' disabled={isSubmitting}>Iniciar sesión</Button>
+                {isSubmitting ? <EkgLoader className='mt-4'/>
+                  : <Button variant='primary' type='submit' disabled={isSubmitting}>Iniciar sesión</Button>
+                }
               </div>
             </Form>
           )}
-
         </Formik>
 
       </Card.Body>
