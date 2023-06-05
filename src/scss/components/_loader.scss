@@ -1,0 +1,52 @@
+.loaderPage{
+  width: 100vw;
+  height: 100vh;
+  background-color: $primary;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .ekgLoader{
+    align-self: center;
+  }
+  h5{
+    color: white;
+  }
+
+  .loading-text {
+    font-size: 45px;
+    @media only screen and (min-width: map-get($grid-breakpoints, md)){
+      font-size: 55px;
+    }
+    @media only screen and (min-width: map-get($grid-breakpoints, lg)){
+      font-size: 65px;
+    }
+    @media only screen and (min-width: map-get($grid-breakpoints, xxl)){
+      font-size: 75px;
+    }
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    text-align: center;
+    color: white;
+    span {
+      display: inline-block;
+      margin: 0 -.03em;
+      animation: loading-text 1.4s infinite alternate;
+      @for $i from 0 through 7 {
+        &:nth-child(#{$i+1}) {
+          animation-delay: #{$i*.1}s;
+        }
+      }
+    }
+  }
+}
+
+// Animation
+@keyframes loading-text {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

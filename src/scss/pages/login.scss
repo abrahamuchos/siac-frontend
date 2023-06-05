@@ -1,0 +1,37 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+#login {
+  max-width: 350px;
+  margin: 5rem auto auto;
+  @media only screen and (min-width: map-get($grid-breakpoints, lg)) {
+    max-width: 400px;
+  }
+  @media only screen and (min-width: map-get($grid-breakpoints, xxl)) {
+    max-width: 500px;
+  }
+
+  .card-img {
+    margin-bottom: 40px;
+    img {
+      width: 200px;
+      @media only screen and (min-width: map-get($grid-breakpoints, lg)) {
+        width: 300px;
+      }
+      @media only screen and (min-width: map-get($grid-breakpoints, xxl)) {
+        width: 400px;
+      }
+    }
+  }
+
+  Form {
+    width: 100%;
+    @media only screen and (min-width: 992px) {
+      width: 80%;
+    }
+
+    .form-floating {
+      margin-bottom: 30px;
+    }
+  }
+}

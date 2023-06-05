@@ -4,15 +4,23 @@ import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import axiosClient from "../axios-client.js";
 import Navigation from "../components/Navigation.jsx";
 import Footer from "../components/Footer.jsx";
+import Loader from "../components/Loader.jsx";
 
 export default function AdminLayout() {
   const {token, setToken, setUser, user} = useUserContext();
   const [isLoading, setIsLoading] = useState(true);
-
+  const modules = [
+    {title: 'Citas', route: '/#'},
+    {title: 'Pacientes', route: '/#'},
+    {title: 'Materiales', route: '/#'},
+    {title: 'Fórmulas y algoritmos', route: '/#'},
+    {title: 'Siac Comunidad', route: '/#'},
+    {title: 'Estadísticas', route: '/#'},
+  ];
 
   useEffect(() => {
     return () => {
-      axiosClient.get('auth_user')
+      axiosClient.get('auth-user')
         .then(({data}) => {
           setUser(data.user)
           setIsLoading(false)
@@ -43,7 +51,7 @@ export default function AdminLayout() {
 
   return (
     <div>
-      {isLoading ? <h1>Cargando ... </h1> :
+      {isLoading ? <Loader/> :
         (user.role?.id === 1 && token ?
           <>
             <Navigation modules={modules} user={user}/>

@@ -1,16 +1,18 @@
-import { createBrowserRouter, Navigate, useNavigate } from "react-router-dom";
-import { useUserContext } from "../contexts/UserProvider.jsx";
+import { createBrowserRouter} from "react-router-dom";
 
+import RootLayout from "../views/RootLayout.jsx";
 import DoctorLayout from "../layouts/DoctorLayout.jsx";
 import AssistantLayout from "../layouts/AssistantLayout.jsx";
-import Login from "../views/Login.jsx";
-import DoctorComponent from "../components/DoctorComponent.jsx";
-import AssistantComponent from "../components/AssistantComponent.jsx";
 import AdminLayout from "../layouts/AdminLayout.jsx";
 import MedicalUnitLayout from "../layouts/MedicalUnitLayout.jsx";
+
+import Login from "../views/Login.jsx";
 import Unauthorized from "../views/Unauthorized.jsx";
 import NotFound from "../views/NotFound.jsx";
-import RootLayout from "../views/RootLayout.jsx";
+import ForgotPassword from "../views/ForgotPassword.jsx";
+import ResetPassword from "../views/ResetPassword.jsx";
+
+import AssistantComponent from "../components/AssistantComponent.jsx";
 
 
 const router = createBrowserRouter([
@@ -20,7 +22,16 @@ const router = createBrowserRouter([
   },
 
   {
-    path: '/login', element: <Login/>
+    path: '/login',
+    element: <Login/>
+  },
+  {
+    path: '/forgot',
+    element: <ForgotPassword/>
+  },
+  {
+    path: '/reset-password',
+    element: <ResetPassword/>
   },
 
   {

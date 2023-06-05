@@ -1,0 +1,24 @@
+.ekgLoader{
+  .ekg{
+    width: 100%;
+    opacity: 1;
+    stroke-dasharray: 600;
+    animation: ecg 1.5s linear forwards infinite,
+    fade 1.5s linear infinite;
+  }
+}
+
+//Animation
+@keyframes ecg{
+  to {
+    stroke-dashoffset: -1200;
+  }
+}
+@keyframes fade{
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+}

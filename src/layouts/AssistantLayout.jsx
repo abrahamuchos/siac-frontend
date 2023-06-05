@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { useUserContext } from "../contexts/UserProvider.jsx";
 import axiosClient from "../axios-client.js";
+import { Navigate, Outlet } from "react-router-dom";
 import Navigation from "../components/Navigation.jsx";
+
 import Footer from "../components/Footer.jsx";
+import Loader from "../components/Loader.jsx";
 
 export default function AssistantLayout() {
   const {token, setToken, setUser, user} = useUserContext();
@@ -20,7 +22,7 @@ export default function AssistantLayout() {
 
   useEffect(() => {
     return () => {
-      axiosClient.get('auth_user')
+      axiosClient.get('auth-user')
         .then(({data}) => {
           setUser(data.user)
           setIsLoading(false)
@@ -38,7 +40,7 @@ export default function AssistantLayout() {
 
   return (
     <>
-      {isLoading ? <h1>Cargando ... </h1> :
+      {isLoading ? <Loader/> :
         (user.role?.id === 4 && token ?
           <>
             <Navigation modules={modules} user={user}/>
@@ -51,7 +53,6 @@ export default function AssistantLayout() {
             </div>
           </>
           : (token ? <Navigate to='/401' replace/> : <Navigate to='/login' replace/>))
-
       }
 
     </>
