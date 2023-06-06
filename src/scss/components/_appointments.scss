@@ -1,0 +1,36 @@
+.fc{
+  a{
+    color: $grey;
+    text-decoration: none;
+  }
+
+  .fc-toolbar-title{
+    color: $black;
+    &:first-letter{
+      text-transform: capitalize;
+    }
+  }
+
+  .fc-button-group{
+    .fc-button-primary, .fc-listWeek-button{
+      background-color: $white-2;
+      border-color: $primary;
+      color: $primary;
+      &:disabled{
+        color: $disabled;
+        border: none;
+      }
+      &:not(:disabled).fc-button-active, &:not(:disabled):active{
+        background-color: $primary;
+        border-color: $primary;
+      }
+      &:not(:disabled).fc-button-active:focus, &:not(:disabled):active:focus{
+        box-shadow: none;
+      }
+
+
+    }
+
+  }
+
+}

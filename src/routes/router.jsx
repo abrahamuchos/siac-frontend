@@ -13,6 +13,8 @@ import ForgotPassword from "../views/ForgotPassword.jsx";
 import ResetPassword from "../views/ResetPassword.jsx";
 
 import AssistantComponent from "../components/AssistantComponent.jsx";
+import Appointments from "../components/appointments/Appointments.jsx";
+import NewAppointment from "../components/appointments/NewAppointment.jsx";
 
 
 const router = createBrowserRouter([
@@ -44,12 +46,16 @@ const router = createBrowserRouter([
 
   {
     path: '/doctor', element: <DoctorLayout/>,
-    // children: [
-    //   {
-    //     index: true,
-    //     element: <DoctorComponent/>
-    //   }
-    // ]
+    children: [
+      {
+        index: true,
+        element: <Appointments/>
+      },
+      {
+        path: 'create',
+        element: <NewAppointment/>
+      }
+    ]
   },
 
   {
