@@ -14,7 +14,8 @@ import ResetPassword from "../views/ResetPassword.jsx";
 
 import AssistantComponent from "../components/AssistantComponent.jsx";
 import Appointments from "../components/appointments/Appointments.jsx";
-import NewAppointment from "../components/appointments/NewAppointment.jsx";
+import Appointment from "../components/appointments/Appointment.jsx";
+import Forbidden from "../views/Forbidden.jsx";
 
 
 const router = createBrowserRouter([
@@ -42,18 +43,36 @@ const router = createBrowserRouter([
 
   {
     path: '/um', element: <MedicalUnitLayout/>,
-  },
-
-  {
-    path: '/doctor', element: <DoctorLayout/>,
     children: [
       {
         index: true,
         element: <Appointments/>
       },
       {
-        path: 'create',
-        element: <NewAppointment/>
+        path: 'appointment',
+        element: <Appointment/>
+      },
+      {
+        path: 'appointment/:id',
+        element: <Appointment/>
+      }
+    ]
+  },
+
+  {
+    path: '/doctor', element: <DoctorLayout/>,
+    children: [
+      {
+        path: 'appointments',
+        element: <Appointments/>
+      },
+      {
+        path: 'appointment',
+        element: <Appointment/>
+      },
+      {
+        path: 'appointment/:id',
+        element: <Appointment/>
       }
     ]
   },
@@ -62,8 +81,16 @@ const router = createBrowserRouter([
     path: '/assistant', element: <AssistantLayout/>,
     children: [
       {
-        path: 'dashboard',
-        element: <AssistantComponent/>
+        index: true,
+        element: <Appointments/>
+      },
+      {
+        path: 'appointment',
+        element: <Appointment/>
+      },
+      {
+        path: 'appointment/:id',
+        element: <Appointment/>
       }
     ]
   },
@@ -71,7 +98,9 @@ const router = createBrowserRouter([
   {
     path: '/401', element: <Unauthorized/>
   },
-
+  {
+    path: '403', element: <Forbidden/>
+  },
   {
     path: '*', element: <NotFound/>
   }

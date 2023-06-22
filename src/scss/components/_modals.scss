@@ -1,32 +1,47 @@
-$modal-padding: 1.5rem;
-.modal-content{
-  border: none;
-  border-radius: 0;
-  box-shadow: 0px 8px 16px rgba(142, 141, 208, 0.12);
-  .modal-header{
+$modal-padding: 1.7rem;
+
+.modal{
+  &.fade .modal-dialog{
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -67%);
+  }
+  .modal-content{
     border: none;
-    padding-left: $modal-padding;
-    padding-right: $modal-padding;
-    padding-top: 1rem;
-    .modal-title.h4{
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(142, 141, 208, 0.12);
+    .modal-header{
+      border: none;
+      padding-left: $modal-padding;
+      padding-right: $modal-padding;
+      padding-top: 1.5rem;
+      justify-content: center;
+      .modal-title.h4{
+        color: $black;
+        font-weight: bold;
+      }
+      .btn-close{
+        position: absolute;
+        right: $modal-header-padding-x;
+      }
+    }
+    .modal-body{
+      padding-left: $modal-padding;
+      padding-right: $modal-padding;
       color: $black;
-      font-weight: bold;
+      text-align: center;
     }
-    .btn-close{
-      position: absolute;
-      right: $modal-header-padding-x;
+    .modal-footer{
+      justify-content: center;
+      border: none;
+      padding-left: $modal-padding;
+      padding-right: $modal-padding;
+      padding-bottom: $modal-padding;
     }
   }
-  .modal-body{
-    padding-left: $modal-padding;
-    padding-right: $modal-padding;
-    color: $black;
-  }
-  .modal-footer{
-    justify-content: center;
-    border: none;
-    padding-left: $modal-padding;
-    padding-right: $modal-padding;
-    padding-bottom: $modal-padding;
-  }
+
+
+
 }

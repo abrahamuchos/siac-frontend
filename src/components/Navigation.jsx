@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from "react-bootstrap";
+
 import axiosClient from "../axios-client.js";
 import { useUserContext } from "../contexts/UserProvider.jsx";
 
@@ -26,6 +27,7 @@ import { useUserContext } from "../contexts/UserProvider.jsx";
  */
 export default function Navigation({modules, user}) {
   const {setToken, setUser} = useUserContext();
+
   /**
    * Logout user
    */

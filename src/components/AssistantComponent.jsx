@@ -1,4 +1,5 @@
 import React from 'react';
+import { useUserContext } from "../contexts/UserProvider.jsx";
 
 export default function AssistantComponent() {
   return (

@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import axiosClient from "../axios-client.js";
 import { Navigate, Outlet } from "react-router-dom";
+
+import axiosClient from "../axios-client.js";
 import { useUserContext } from "../contexts/UserProvider.jsx";
 import Navigation from "../components/Navigation.jsx";
-
 import Footer from "../components/Footer.jsx";
 import Loader from "../components/Loader.jsx";
+
 
 export default function DoctorLayout() {
   const {token, setToken, setUser, user} = useUserContext();
   const [isLoading, setIsLoading] = useState(true);
   const modules = [
-    {title: 'Citas', route: '/#'},
+    {title: 'Citas', route: 'doctor/appointments'},
     {title: 'Pacientes', route: '/#'},
     {title: 'Materiales', route: '/#'},
     {title: 'Fórmulas y algoritmos', route: '/#'},
     {title: 'Siac Comunidad', route: '/#'},
     {title: 'Estadísticas', route: '/#'},
   ];
-
 
   useEffect(() => {
     return () => {
@@ -48,7 +48,6 @@ export default function DoctorLayout() {
               <main>
                 <h1>Doctor Layout</h1>
                 <Outlet/>
-
               </main>
               <Footer/>
             </div>
