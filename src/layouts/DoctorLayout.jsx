@@ -8,6 +8,7 @@ import Footer from "../components/Footer.jsx";
 import Loader from "../components/Loader.jsx";
 
 
+
 export default function DoctorLayout() {
   const {token, setToken, setUser, user} = useUserContext();
   const [isLoading, setIsLoading] = useState(true);
@@ -36,6 +37,8 @@ export default function DoctorLayout() {
         });
     };
   }, []);
+
+
 
 
   return (

@@ -4,8 +4,16 @@
     text-decoration: none;
   }
 
+  .fc-toolbar-chunk{
+    text-align: center;
+  }
+
   .fc-toolbar-title{
     color: $black;
+    font-size: 1em;
+    @media only screen and (min-width: map-get($grid-breakpoints, md)){
+      font-size: 1.75em;
+    }
     &:first-letter{
       text-transform: capitalize;
     }
@@ -28,9 +36,29 @@
         box-shadow: none;
       }
 
-
     }
+  }
+
+  .fc-button-primary, .fc-listWeek-button{
+    background-color: $white-2;
+    border-color: $primary;
+    color: $primary;
+    &:disabled{
+      background-color: $disabled-2;
+      color: $disabled;
+      border: none;
+    }
+    &:not(:disabled).fc-button-active, &:not(:disabled):active{
+      background-color: $primary;
+      border-color: $primary;
+    }
+    &:not(:disabled).fc-button-active:focus, &:not(:disabled):active:focus{
+      box-shadow: none;
+    }
+
 
   }
 
 }
+
+//fc-customBtn-button fc-button fc-button-primary

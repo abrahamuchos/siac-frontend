@@ -1,35 +1,80 @@
-#navbar{
-  overflow-x: hidden;
+#navbar {
   height: 100%;
-  width: $nav-width;
+  width: 0px;
+  //width: $nav-width;
   position: fixed;
   z-index: 1;
   border-radius: 0 20px 20px 0;
+  transition: 0.5s;
+  //padding: 1rem;
+  padding: 0;
+  @media only screen and (min-width: map-get($grid-breakpoints, lg)) {
+    padding: 1rem;
+    width: $nav-width;
+  }
 
-  .rounded-circle{
+  .nav-logo {
+    overflow-x: hidden;
+  }
+
+  .rounded-circle {
     width: 55px;
   }
-  .nav-name{
-    a{
+
+  .nav-name {
+    a {
       color: $grey;
       text-decoration: none;
     }
   }
-  .nav-logout > Button{
-    color: $grey;
+
+  .nav-logout {
+    overflow-x: hidden;
+
+    Button {
+      color: $grey;
+    }
   }
+
+  .nav-toggle {
+    position: relative;
+    transition: left .3s linear;
+    @media only screen and (min-width: map-get($grid-breakpoints, lg)) {
+      left: 200px;
+    }
+    .nav-toggle-icon {
+      background-color: $white;
+      border-radius: 0 5px 5px 0;
+      position: absolute;
+      color: $grey;
+      width: 30px;
+      height: 30px;
+      top: 35px;
+      cursor: pointer;
+    }
+  }
+
+  .nav-user-info {
+    overflow-x: hidden;
+  }
+
 }
 
-.nav{
+.nav {
   margin-top: 20%;
-  .nav-item{
+  overflow-x: hidden;
+
+  .nav-item {
     font-size: 18px;
-    .nav-link{
+
+    .nav-link {
       color: $grey-3;
     }
-    .active{
-      color:$black;
+
+    .active {
+      color: $black;
       background-color: $white;
     }
   }
 }
+

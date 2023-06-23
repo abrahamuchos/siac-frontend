@@ -138,10 +138,10 @@ export default function Appointment() {
             <Row>
               {id ?
                 <>
-                  <Col xs={7} md={9} lg={10}>
+                  <Col xs={7} md={8} lg={10}>
                     <h1>Editar cita</h1>
                   </Col>
-                  <Col xs={5} md={3} lg={2} className='text-end'>
+                  <Col xs={5} md={4} lg={2} className='text-lg-end'>
                     <Dropdown>
                       <Dropdown.Toggle variant='tertiary'>
                         Opciones
@@ -154,15 +154,15 @@ export default function Appointment() {
                     </Dropdown>
                   </Col>
                 </>
-                : <Col xs={12}><h1>Añadir nueva cita</h1></Col>
+                : <Col xs={12}><h1 className='text-center text-md-start'>Añadir nueva cita</h1></Col>
               }
             </Row>
             {/* Search Bar and button*/}
             {!id &&
-              <section className='mt-5'>
+              <section className='mt-2 mt-lg-5'>
                 <Container>
                   <Row>
-                    <Col xs={12} md={2} lg={2} xl={2} className='align-self-center'>
+                    <Col xs={12} md={2} lg={2} xl={2} className='align-self-center text-center text-md-start'>
                       <Form.Label>Buscar paciente</Form.Label>
                     </Col>
                     <Col xs={12} md={5} lg={5} xl={4} className='align-self-center'>
@@ -184,7 +184,7 @@ export default function Appointment() {
             {/* End Search Bar and button*/}
 
             {/*Form new appointment*/}
-            <section className='mt-5'>
+            <section className='mt-2 mt-lg-5'>
               <FormAppointment patient={patient} appointment={appointment} setError={setError}
                                modalDelete={modalDelete} setModalDelete={setModalDelete}/>
             </section>

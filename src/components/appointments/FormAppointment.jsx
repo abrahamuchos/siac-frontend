@@ -95,6 +95,7 @@ registerLocale('es', es)
 export default function FormAppointment({patient, appointment, setError, modalDelete, setModalDelete}) {
   const {user} = useUserContext();
   const location = useLocation();
+  const pathname = location.pathname.split('/');
   const [specialists, setSpecialists] = useState([]);
   const [consultationHours, setConsultationHours] = useState([]);
   const [reasonsDelete, setReasonsDelete] = useState(/**@type MyReasonsDeleteState**/[]);
@@ -334,7 +335,8 @@ export default function FormAppointment({patient, appointment, setError, modalDe
         setSuccessModal({
           show: true,
           title: 'Guardado con éxito',
-          message: 'La cita para el paciente fue creada exitosamente.'
+          message: 'La cita para el paciente fue creada exitosamente.',
+          url: `/${pathname[1]}/appointments`
         })
       })
       .catch((err) => {
@@ -363,7 +365,8 @@ export default function FormAppointment({patient, appointment, setError, modalDe
         setSuccessModal({
           show: true,
           title: 'Actualizado con éxito',
-          message: 'La cita para el paciente fue actualizada exitosamente.'
+          message: 'La cita para el paciente fue actualizada exitosamente.',
+          url: `/${pathname[1]}/appointments`
         })
       })
       .catch((err) => {
@@ -382,7 +385,6 @@ export default function FormAppointment({patient, appointment, setError, modalDe
     }
     axiosClient.delete(`/appointment/${appointment.id}`, {data: payload})
       .then(() => {
-        const pathname = location.pathname.split('/');
         setLoaderModal(false);
         setSuccessModal({
           show: true,
@@ -402,20 +404,20 @@ export default function FormAppointment({patient, appointment, setError, modalDe
     <Form id='form-appointment' className='container' onSubmit={formik.handleSubmit} autoComplete="off" noValidate>
 
       <Form.Group className='row'>
-        <Col xs={6} lg={2} className='align-self-center'>
+        <Col xs={6} lg={2} className='align-self-center mt-3 mt-lg-0'>
           <Form.Label>Nombre y apellido</Form.Label>
         </Col>
-        <Col xs={6} lg={4}>
+        <Col xs={6} lg={4} className='mt-3 mt-lg-0'>
           <Form.Control type='text' name='name' value={formik.values.name} onChange={formik.handleChange}
                         disabled={true}
                         className={formik.touched.name && formik.errors.name ? "error-input" : null}/>
           {formik.touched.name && formik.errors.name ? (
             <div className="error-input-message">{formik.errors.name}</div>) : null}
         </Col>
-        <Col xs={6} lg={2} className='align-self-center text-end'>
+        <Col xs={6} lg={2} className='align-self-center text-start text-lg-end mt-3 mt-lg-0'>
           <Form.Label>Documento</Form.Label>
         </Col>
-        <Col xs={6} lg={4}>
+        <Col xs={6} lg={4} className='mt-3 mt-lg-0'>
           <Form.Control type='text' name='document' value={formik.values.document} onChange={formik.handleChange}
                         disabled={true}
                         className={formik.touched.document && formik.errors.document ? "error-input" : null}/>
@@ -454,10 +456,10 @@ export default function FormAppointment({patient, appointment, setError, modalDe
             <div className="error-input-message">{formik.errors.specialist}</div>) : null}
         </Col>
 
-        <Col xs={6} lg={2} className='align-self-center text-end'>
+        <Col xs={6} lg={2} className='align-self-center text-start text-lg-end mt-3 mt-lg-0'>
           <Form.Label>Motivo de consulta</Form.Label>
         </Col>
-        <Col xs={6} lg={4}>
+        <Col xs={6} lg={4} className='mt-3 mt-lg-0'>
           <Form.Control type='text' name='reason' value={formik.values.reason} onChange={formik.handleChange}
                         className={formik.touched.reason && formik.errors.reason ? "error-input" : null}/>
           {formik.touched.reason && formik.errors.reason ? (
@@ -504,10 +506,10 @@ export default function FormAppointment({patient, appointment, setError, modalDe
           {formik.touched.startTime && formik.errors.startTime ? (
             <div className="error-input-message">{formik.errors.startTime}</div>) : null}
         </Col>
-        <Col xs={6} lg={2} className='align-self-center text-end offset-lg-1'>
+        <Col xs={6} lg={2} className='align-self-center text-start text-lg-end offset-lg-1 mt-3 mt-lg-0'>
           <Form.Label>Hora Fin</Form.Label>
         </Col>
-        <Col xs={6} lg={3}>
+        <Col xs={6} lg={3} className='mt-3 mt-lg-0'>
           <DatePicker showTimeSelect showTimeSelectOnly name='endTime' selected={formik.values.endTime}
                       onChange={time => formik.setFieldValue('endTime', time)} filterTime={handleFilterTime}
                       className={'form-control ' + (formik.touched.endTime && formik.errors.endTime ? "error-input" : null)}

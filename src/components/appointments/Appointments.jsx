@@ -113,12 +113,13 @@ export default function Appointments() {
 
   const handleEventClick = (info) => {
     handleMouseLeave();
-    const pathname = location.pathname.split('/')
-    if(typeof pathname[1] != 'undefined'){
-      navigate('/'+pathname[1]+'/appointment/' + info.event.id)
-    }else {
-      navigate('/404')
-    }
+    const path = pathRoot();
+    navigate(`/${path}/appointment/${info.event.id}`)
+  }
+
+  const handleAddAppointment = () =>{
+    const path = pathRoot();
+    navigate(`/${path}/appointment`)
   }
 
   /**
@@ -154,6 +155,50 @@ export default function Appointments() {
     }
   };
 
+  /**
+   * Handle fullCalendar header toolbar according to device
+   * @return {{left: string, center: string, right: string}}
+   */
+  const handleHeaderToolbar = () => {
+    const isMobile = isMobileView();
+
+    if (isMobile) {
+      return {
+        left: 'customBtn',
+        center: 'title',
+        right: 'prev,next'
+      }
+
+    }else{
+      return{
+        left: 'prev,next,listWeek,customBtn',
+        center: 'title',
+        right: 'today,dayGridMonth,timeGridWeek,timeGridDay'
+      }
+    }
+
+  }
+
+  /**
+   * Get path root on url (doctor, assistant, um)
+   * @return {string}
+   */
+  const pathRoot = () =>{
+    const pathname = location.pathname.split('/')
+    if(typeof pathname[1] != 'undefined'){
+      return pathname[1];
+    }else {
+      navigate('/404')
+    }
+  }
+
+  /**
+   * Check if client devices is a mobile (also tablet)
+   * @return {boolean}
+   */
+  const isMobileView = () =>{
+    return window.innerWidth < 900;
+  }
 
   return (
     <>
@@ -169,16 +214,11 @@ export default function Appointments() {
               plugins={[dayGridPlugin, listPlugin, interactionPlugin, timeGridPlugin]}
               selectable={true}
               initialView="listWeek"
-              headerToolbar={{
-                left: 'listWeek,customBtn',
-                center: 'title',
-              }}
+              headerToolbar={handleHeaderToolbar()}
               customButtons={{
                 customBtn: {
                   text: 'Añadir cita',
-                  click: function () {
-                    return navigate('appointment');
-                  }
+                  click: handleAddAppointment
                 }
               }}
               buttonText={{
@@ -204,18 +244,12 @@ export default function Appointments() {
               height={"85vh"}
               plugins={[dayGridPlugin, listPlugin, interactionPlugin, timeGridPlugin]}
               selectable={true}
-              initialView="dayGridMonth"
-              headerToolbar={{
-                left: 'prev,next,listWeek,customBtn',
-                center: 'title',
-                right: 'today,dayGridMonth,timeGridWeek,timeGridDay'
-              }}
+              initialView={ isMobileView() ? "listWeek" :"dayGridMonth"}
+              headerToolbar={handleHeaderToolbar()}
               customButtons={{
                 customBtn: {
                   text: 'Añadir cita',
-                  click: function () {
-                    return navigate('appointment');
-                  }
+                  click: handleAddAppointment
                 }
               }}
               buttonText={{

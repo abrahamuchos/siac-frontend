@@ -1,4 +1,13 @@
 .card{
   border: none;
   border-radius: 20px;
+  .card-body{
+    padding: ($card-spacer-x - .5) ($card-spacer-y - .5);
+    @media only screen and (min-width: map-get($grid-breakpoints, md)){
+      padding: $card-spacer-x $card-spacer-y;
+    }
+    @media only screen and (min-width: map-get($grid-breakpoints, lg)){
+      padding: $card-spacer-x $card-spacer-y;
+    }
+  }
 }
