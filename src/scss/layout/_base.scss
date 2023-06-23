@@ -1,22 +1,29 @@
 #content-layout{
   position: relative;
   min-height: 100vh;
-  margin-left: $nav-width + 40px;
+  transition: margin-left .5s;
+  @media only screen and (min-width: map-get($grid-breakpoints, lg)) {
+    margin-left: $nav-width + 40px;
+  }
 }
 
 main{
-  padding-top: 2rem;
-  padding-right: 40px;
-  padding-bottom: 3rem;
+  padding: 2rem 1rem 3rem;
+  @media only screen and (min-width: map-get($grid-breakpoints, lg)){
+    padding: 2rem 40px 3rem;
+  }
 }
 
 footer{
   position: absolute;
-  bottom: 0;
+  bottom: -15px;
   width: 100%;
   text-align: center;
   display: flex;
   align-items: center;
+  @media only screen and (min-width: map-get($grid-breakpoints, md)){
+    bottom: 0;
+  }
   small{
     margin-left: auto;
   }

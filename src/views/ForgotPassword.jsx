@@ -1,15 +1,19 @@
+/**
+ * @typedef {string} MyNotificationState
+ */
 import React, { useState } from 'react';
 import axiosClient from "../axios-client.js";
 import { Alert, Button, Card, FloatingLabel, Form } from "react-bootstrap";
 import { Formik } from "formik";
 import { object, string } from "yup";
-import Footer from "../components/Footer.jsx";
 
-import '../scss/pages/forgotPassword.scss';
+import Footer from "../components/Footer.jsx";
 import EkgLoader from "../components/EkgLoader.jsx";
 
+import '../scss/pages/forgotPassword.scss';
+
 export default function ForgotPassword() {
-  const [notification, setNotification] = useState();
+  const [notification, setNotification] = useState(/**@type MyNotificationState**/);
   const [errors, setErrors] = useState(false);
 
   const forgotSchema = object({

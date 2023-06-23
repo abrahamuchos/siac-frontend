@@ -11,7 +11,7 @@ export default function AssistantLayout() {
   const {token, setToken, setUser, user} = useUserContext();
   const [isLoading, setIsLoading] = useState(true);
   const modules = [
-    {title: 'Citas', route: '/#'},
+    {title: 'Citas', route: '/assistant/appointments'},
     {title: 'Pacientes', route: '/#'},
     {title: 'Materiales', route: '/#'},
     {title: 'Fórmulas y algoritmos', route: '/#'},

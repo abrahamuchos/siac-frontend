@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+
 import { useUserContext } from "../contexts/UserProvider.jsx";
 import axiosClient from "../axios-client.js";
+import ErrorAlert from "../components/alerts/ErrorAlert.jsx";
 
 
 export default function RootLayout() {
   const {token, user, setUser} = useUserContext();
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
 
 
   useEffect(() => {
@@ -16,22 +19,24 @@ export default function RootLayout() {
         setIsLoading(false)
       })
       .catch((err) => {
-        console.error(err)
         setIsLoading(false)
+        setError(err)
       });
   }, []);
 
 
   return (
     <>
-      {isLoading ? <h1>Cargando...</h1> :
+      {isLoading ? <div></div> :
         (user.role?.id === 1  && token? <Navigate to='/admin' replace/> :
-            user.role?.id === 2 && token ? <Navigate to='/um' replace/> :
+            user.role?.id === 2 && token ? <Navigate to='/um/appointments' replace/> :
               user.role?.id === 3 && token ? <Navigate to='/doctor' replace/> :
-                user.role?.id === 4 && token ? <Navigate to='/assistant' replace/> :
+                user.role?.id === 4 && token ? <Navigate to='/assistant/appointments' replace/> :
                   <Navigate to='/login' replace/>
         )
-
+      }
+      {error ?
+        <ErrorAlert err={error.response}/> : ''
       }
     </>
   );

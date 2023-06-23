@@ -99,8 +99,8 @@ export default function Login() {
 
     {isLoading ? null : (user.role?.id === 1 && token ?
       <Navigate to='/admin' replace/> : user.role?.id === 2 && token ?
-        <Navigate to='/um' replace/> : user.role?.id === 3 && token ?
-          <Navigate to='/doctor' replace/> : user.role?.id === 4 && token ? <Navigate to='/assistant' replace/> :
+        <Navigate to='/um/appointments' replace/> : user.role?.id === 3 && token ?
+          <Navigate to='/doctor' replace/> : user.role?.id === 4 && token ? <Navigate to='/assistant/appointments' replace/> :
             '')}
   </>);
 }
